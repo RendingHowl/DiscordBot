@@ -49,25 +49,6 @@ namespace DiscordBot
             }
             else
             {
-                var _lava_node = Lava.Node().Result;
-                var _lava_conn = Lava.Connect(_lava_node).Result;
-                await _lava_conn.PlayAsync(GetFirst);
-            }
-        }
-
-        static public async Task PlayNextCmd()
-        {
-            track_list.RemoveAt(0);
-
-            if (IsEmpty)
-            {
-                if (Playlist.IsActive)
-                {
-                    Playlist.Deactivate();
-                }
-            }
-            else
-            {
                 CurrentLink = GetFirst.Uri.ToString();
                 var _lava_node = Lava.Node().Result;
                 var _lava_conn = Lava.Connect(_lava_node).Result;

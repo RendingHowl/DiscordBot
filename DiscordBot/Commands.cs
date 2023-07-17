@@ -57,8 +57,22 @@ namespace DiscordBot
             var _lava_track = _lava_search.Tracks.First();
             embed_types _embed_type = embed_types.first;
 
+            string _link = "";
+
+            switch (_query_type)
+            {
+                case query_types.str:
+                _link = _lava_track.Uri.ToString();
+                break;
+
+                case query_types.url:
+                _link = _user_query;
+                break;
+            }
+
             if (Queue.IsEmpty)
             {
+                Queue.CurrentLink = _link;
                 await _lava_conn.PlayAsync(_lava_track);
             }
             else
@@ -68,19 +82,8 @@ namespace DiscordBot
 
             Queue.Add(_lava_track);
 
-            switch (_query_type)
-            {
-                case query_types.str:
-                Queue.CurrentLink = _lava_track.Uri.ToString();
-                break;
-
-                case query_types.url:
-                Queue.CurrentLink = _user_query;
-                break;
-            }
-
             //Сохранение трека в плейлист
-            Playlist.Save(Queue.CurrentLink);
+            Playlist.Save(_link);
 
             //Окончание трека
             if (Queue.Create(_ctx))
@@ -206,10 +209,9 @@ namespace DiscordBot
 
                     if (Queue.IsEmpty)
                     {
+                        Queue.CurrentLink = _playlist_query;
                         await _lava_conn.PlayAsync(_lava_track);
                     };
-
-                    Queue.CurrentLink = _playlist_query;
 
                     for (int _i = 1; _i < Playlist.queue_track_list.Count; ++_i)
                     {

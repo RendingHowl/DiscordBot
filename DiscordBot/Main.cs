@@ -86,7 +86,7 @@ namespace DiscordBot
             var _lava_client = discord_client.UseLavalink();
             await _lava_client.ConnectAsync(_lava_config);
 
-            //Обновление
+            //Блок
             await Task.Delay(-1);
         }
     }
