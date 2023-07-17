@@ -209,6 +209,7 @@ namespace DiscordBot
 
                     if (Queue.IsEmpty)
                     {
+                        Queue.Add(_lava_track);
                         Queue.CurrentLink = _playlist_query;
                         await _lava_conn.PlayAsync(_lava_track);
                     };
