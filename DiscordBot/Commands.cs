@@ -214,7 +214,7 @@ namespace DiscordBot
                         await _lava_conn.PlayAsync(_lava_track);
                     };
 
-                    for (int _i = 0; _i < Playlist.QUEUE_SIZE; ++_i)
+                    for (int _i = 1; _i < Playlist.QUEUE_SIZE; ++_i)
                     {
                         _playlist_query = Playlist.queue_track_list[_i];
                         _user_query_uri = new Uri(_playlist_query);

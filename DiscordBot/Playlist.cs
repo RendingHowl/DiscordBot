@@ -59,20 +59,21 @@ namespace DiscordBot
 
         static public bool Activate()
         {
-            if (saved_track_list.Count != 0)
+            var saved_track_list_size = saved_track_list.Count;
+
+            if (saved_track_list_size != 0)
             {
                 buffer_track_list.Clear();
                 queue_track_list.Clear();
 
-                for (int _i = 0; _i < QUEUE_SIZE; ++_i)
+                for (int _i = 0; _i < saved_track_list_size; ++_i)
                 {
                     buffer_track_list.Add(saved_track_list[_i]);
                 }
 
-                int _imax = buffer_track_list.Count;
                 Random _rnd = new Random();
 
-                for (int _i = 0; _i < _imax; ++_i)
+                for (int _i = 0; _i < QUEUE_SIZE; ++_i)
                 {
                     int _ind = _rnd.Next(buffer_track_list.Count);
                     queue_track_list.Add(buffer_track_list[_ind]);
