@@ -214,7 +214,7 @@ namespace DiscordBot
                         await _lava_conn.PlayAsync(_lava_track);
                     };
 
-                    for (int _i = 1; _i < Playlist.queue_track_list.Count; ++_i)
+                    for (int _i = 0; _i < Playlist.QUEUE_SIZE; ++_i)
                     {
                         _playlist_query = Playlist.queue_track_list[_i];
                         _user_query_uri = new Uri(_playlist_query);
@@ -262,7 +262,7 @@ namespace DiscordBot
                     _embed = new DiscordEmbedBuilder()
                     {
                         Color = DiscordColor.HotPink,
-                        Title = "ПОДРУБИЛ ПЛЕЙЛИСТ :accordion:"
+                        Title = $"ПОДРУБИЛ {Playlist.QUEUE_SIZE} ТРЕКОВ ИЗ ПЛЕЙЛИСТА :accordion:"
                     };
 
                     DiscordEmbedBuilder _queue_embed = new DiscordEmbedBuilder()
@@ -280,7 +280,7 @@ namespace DiscordBot
                     _embed = new DiscordEmbedBuilder()
                     {
                         Color = DiscordColor.Brown,
-                        Title = $"ЗАКИНУЛ ПЛЕЙЛИСТ В ОЧЕРЕДЬ :accordion:"
+                        Title = $"ЗАКИНУЛ {Playlist.QUEUE_SIZE} ТРЕКОВ ПЛЕЙЛИСТА В ОЧЕРЕДЬ :accordion:"
                     };
 
                     await _ctx.RespondAsync(_embed);

@@ -47,12 +47,12 @@ namespace DiscordBot
                 };
 
                 File.WriteAllText(CONFIG_PATH, JsonConvert.SerializeObject(_config));
-                Console.WriteLine($"Файл {CONFIG_PATH} создан. Закидывай токен бота и настройки лавалинк сервера");
+                Console.WriteLine($"Файл {CONFIG_PATH} создан. Надо закинуть токен бота и настройки лавалинка");
                 Console.ReadKey();
             }
 
             //Дискорд
-            discord_client = new DiscordClient(new DiscordConfiguration()
+            var discord_client = new DiscordClient(new DiscordConfiguration()
             {
                 Token = _config.token,
                 TokenType = TokenType.Bot,

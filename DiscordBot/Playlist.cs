@@ -19,6 +19,7 @@ namespace DiscordBot
             }
         }
 
+        public const int QUEUE_SIZE = 50;
         const string PATH = "playlist.txt";
 
         static bool active = false;
@@ -63,7 +64,7 @@ namespace DiscordBot
                 buffer_track_list.Clear();
                 queue_track_list.Clear();
 
-                for (int _i = 0; _i < saved_track_list.Count; ++_i)
+                for (int _i = 0; _i < QUEUE_SIZE; ++_i)
                 {
                     buffer_track_list.Add(saved_track_list[_i]);
                 }
